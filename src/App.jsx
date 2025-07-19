@@ -3,7 +3,7 @@ import './App.css'
 import { ToastContainer} from 'react-toastify';
 import Products from './components/products'
 import Cartitems from './components/Cartitems'
-
+import NavCom from './components/NavCom';
 const products = [
   {
     id:1,
@@ -35,6 +35,7 @@ function App() {
 
   const [loading,setloading] = useState(false)
   const [items,setitems] = useState([])
+  const [isopen,setisopen] = useState(false)
 
 
 useEffect(function(){
@@ -48,13 +49,22 @@ useEffect(function(){
 },[])
 
   return (
-    <>
-      <ToastContainer />
-      {loading && <p>loading....</p>}
-      {!loading && items && <Products values = {items}/>}
-      <Cartitems/>
+    <div>
+      <NavCom  setisopen={setisopen}/>
       
-    </>
+      <div className="flex">
+        <ToastContainer />
+        {loading && <p>loading....</p>}
+        {!loading && items && <Products values = {items}/>}
+        {isopen && (
+           <Cartitems isopen={isopen}/>
+        )}
+        
+
+
+      </div>
+    </div>    
+
   )
 }
 

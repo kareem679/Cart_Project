@@ -6,13 +6,18 @@ import { ShoppingCartContext } from "../Context/Context"
 const Cartitems = () => {
   const {cartitems,setcartitems } = useContext(ShoppingCartContext)
   return (
-    <div>
-        <h1>Cart {cartitems.length}</h1>
-        <ul className="grid grid-cols-1 gap-20 mx-30 md:grid-cols-3 ">
+    <div className="max-h-[800px] w-1/5 overflow-y-auto   ">
+        <h1 className="text-3xl m-5 gap-5">Cart:{cartitems.length}</h1>
+        {cartitems.length === 0 ? (
+          <h1 className="text-3xl w-full">cart empty</h1>          
+        ):(
+          <ul className="grid grid-cols-1  ">
             {cartitems.map(function(cartitem,index){
             return <Cartitem  index={index} key={cartitem.id} cartitem = {cartitem} setcartitems= {setcartitems}/>
             })}
         </ul>
+        )}
+
          
     </div>
    

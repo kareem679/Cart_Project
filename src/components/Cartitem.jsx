@@ -8,7 +8,7 @@ const Cartitem = ({cartitem,setcartitems,index}) => {
   }
   return (
     <li>
-      <img src={cartitem.img} alt={cartitem.title} />
+      <img className="w-[300px] " src={cartitem.img} alt={cartitem.title} />
       <p className="w-full break-words whitespace-normal text-sm">{cartitem.title}</p>
       <p>Price: <strong>{Number(cartitem.price).toLocaleString()}</strong></p>
       <p>instedof: <span className="line-through">{cartitem.insteadof}</span></p>
